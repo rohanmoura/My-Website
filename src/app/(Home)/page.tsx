@@ -18,18 +18,18 @@ export default function Home() {
               <span className="text-blue-600">businesses ready to grow</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Transform your business vision into a powerful online presence. 
+              Transform your business vision into a powerful online presence.
               Specializing in modern, responsive websites that convert visitors into customers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 Start Your Project
               </Link>
-              <Link 
-                href="/work" 
+              <Link
+                href="/work"
                 className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-300"
               >
                 View My Work
@@ -77,7 +77,7 @@ export default function Home() {
               What I Build
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              From simple landing pages to complex web applications, 
+              From simple landing pages to complex web applications,
               I create solutions that help your business succeed online.
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
                 link: "/services/dashboards"
               }
             ].map((service) => (
-              <Link 
+              <Link
                 key={service.title}
                 href={service.link}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
@@ -141,11 +141,11 @@ export default function Home() {
             Ready to Build Something Amazing?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let's discuss your project and turn your vision into reality. 
+            Let's discuss your project and turn your vision into reality.
             I'm here to help your business succeed online.
           </p>
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             Get Started Today
