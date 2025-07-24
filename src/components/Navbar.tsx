@@ -5,11 +5,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigation } from '@/contexts/NavigationContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { navigateWithLoader } = useNavigation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +23,8 @@ const Navbar = () => {
   };
 
   const pathname = usePathname();
+
+
 
   // Handle scroll effect
   useEffect(() => {
@@ -88,8 +93,8 @@ const Navbar = () => {
         marginTop: isScrolled ? '4px' : '0px',
         borderWidth: isScrolled ? '1px' : '0px',
         borderColor: isScrolled ? 'rgba(68, 68, 68, 0.3)' : 'transparent',
-        boxShadow: isScrolled 
-          ? '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(0, 0, 0, 0.2)' 
+        boxShadow: isScrolled
+          ? '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(0, 0, 0, 0.2)'
           : '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}
       style={{
@@ -139,10 +144,11 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link
-                href="/"
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActiveLink('/') ? 'text-white' : ''
-                  }`}
+              <button
+                onClick={(e) => navigateWithLoader('/', e)}
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  isActiveLink('/') ? 'text-white' : ''
+                }`}
                 style={{
                   color: isActiveLink('/') ? '#FFFFFF' : 'var(--text-primary)',
                   backgroundColor: isActiveLink('/') ? 'var(--bg-hover)' : 'transparent'
@@ -168,7 +174,7 @@ const Navbar = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
-              </Link>
+              </button>
             </motion.div>
 
             {/* Services Dropdown */}
@@ -274,10 +280,11 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link
-                href="/work"
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActiveLink('/work') ? 'text-white' : ''
-                  }`}
+              <button
+                onClick={(e) => navigateWithLoader('/work', e)}
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  isActiveLink('/work') ? 'text-white' : ''
+                }`}
                 style={{
                   color: isActiveLink('/work') ? '#FFFFFF' : 'var(--text-primary)',
                   backgroundColor: isActiveLink('/work') ? 'var(--bg-hover)' : 'transparent'
@@ -303,17 +310,18 @@ const Navbar = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
-              </Link>
+              </button>
             </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link
-                href="/about"
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActiveLink('/about') ? 'text-white' : ''
-                  }`}
+              <button
+                onClick={(e) => navigateWithLoader('/about', e)}
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  isActiveLink('/about') ? 'text-white' : ''
+                }`}
                 style={{
                   color: isActiveLink('/about') ? '#FFFFFF' : 'var(--text-primary)',
                   backgroundColor: isActiveLink('/about') ? 'var(--bg-hover)' : 'transparent'
@@ -339,20 +347,19 @@ const Navbar = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
-              </Link>
+              </button>
             </motion.div>
 
             {/* CTA Button */}
             <motion.div
               whileHover={{
-                scale: 1.05,
-                boxShadow: '0 10px 25px rgba(224, 224, 224, 0.2)'
+                scale: 1.05
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <Link
-                href="/contact"
+              <button
+                onClick={(e) => navigateWithLoader('/contact', e)}
                 className="ml-4 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300"
                 style={{
                   backgroundColor: 'var(--text-primary)',
@@ -365,8 +372,8 @@ const Navbar = () => {
                   e.currentTarget.style.backgroundColor = 'var(--text-primary)';
                 }}
               >
-                Start Your Project
-              </Link>
+                Start Your Website
+              </button>
             </motion.div>
           </div>
 
@@ -432,9 +439,12 @@ const Navbar = () => {
                 whileHover={{ x: 4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  href="/"
-                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/') ? 'bg-opacity-20' : ''
+                <button
+                  onClick={(e) => {
+                    navigateWithLoader('/', e);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/') ? 'bg-opacity-20' : ''
                     }`}
                   style={{
                     color: isActiveLink('/') ? '#FFFFFF' : 'var(--text-primary)',
@@ -464,10 +474,9 @@ const Navbar = () => {
                       e.currentTarget.style.color = 'var(--text-primary)';
                     }
                   }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Home
-                </Link>
+                </button>
               </motion.div>
 
               {/* Mobile Services */}
@@ -536,9 +545,12 @@ const Navbar = () => {
                           whileHover={{ x: 4 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <Link
-                            href={service.href}
-                            className="block px-4 py-2 rounded-lg text-sm transition-all duration-300 active:scale-95"
+                          <button
+                            onClick={(e) => {
+                              navigateWithLoader(service.href, e);
+                              setIsMenuOpen(false);
+                            }}
+                            className="block w-full text-left px-4 py-2 rounded-lg text-sm transition-all duration-300 active:scale-95"
                             style={{ color: 'var(--text-secondary)' }}
                             onTouchStart={(e) => {
                               e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
@@ -556,10 +568,9 @@ const Navbar = () => {
                               e.currentTarget.style.backgroundColor = 'transparent';
                               e.currentTarget.style.color = 'var(--text-secondary)';
                             }}
-                            onClick={() => setIsMenuOpen(false)}
                           >
                             {service.name}
-                          </Link>
+                          </button>
                         </motion.div>
                       ))}
                     </motion.div>
@@ -571,9 +582,12 @@ const Navbar = () => {
                 whileHover={{ x: 4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  href="/work"
-                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/work') ? 'bg-opacity-20' : ''
+                <button
+                  onClick={(e) => {
+                    navigateWithLoader('/work', e);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/work') ? 'bg-opacity-20' : ''
                     }`}
                   style={{
                     color: isActiveLink('/work') ? '#FFFFFF' : 'var(--text-primary)',
@@ -603,19 +617,21 @@ const Navbar = () => {
                       e.currentTarget.style.color = 'var(--text-primary)';
                     }
                   }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   My Work
-                </Link>
+                </button>
               </motion.div>
 
               <motion.div
                 whileHover={{ x: 4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  href="/about"
-                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/about') ? 'bg-opacity-20' : ''
+                <button
+                  onClick={(e) => {
+                    navigateWithLoader('/about', e);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 active:scale-95 ${isActiveLink('/about') ? 'bg-opacity-20' : ''
                     }`}
                   style={{
                     color: isActiveLink('/about') ? '#FFFFFF' : 'var(--text-primary)',
@@ -645,10 +661,9 @@ const Navbar = () => {
                       e.currentTarget.style.color = 'var(--text-primary)';
                     }
                   }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   About
-                </Link>
+                </button>
               </motion.div>
 
               {/* Mobile CTA */}
@@ -657,9 +672,12 @@ const Navbar = () => {
                 whileTap={{ scale: 0.98 }}
                 className="mx-4 mt-4"
               >
-                <Link
-                  href="/contact"
-                  className="block px-6 py-3 rounded-lg text-center text-base font-semibold transition-all duration-300 active:scale-95"
+                <button
+                  onClick={(e) => {
+                    navigateWithLoader('/contact', e);
+                    setIsMenuOpen(false);
+                  }}
+                  className="block w-full px-6 py-3 rounded-lg text-center text-base font-semibold transition-all duration-300 active:scale-95"
                   style={{
                     backgroundColor: 'var(--text-primary)',
                     color: 'var(--bg-primary)'
@@ -672,15 +690,16 @@ const Navbar = () => {
                     e.currentTarget.style.backgroundColor = 'var(--text-primary)';
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Start Your Project
-                </Link>
+                </button>
               </motion.div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+
     </motion.nav>
   );
 };

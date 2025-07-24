@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { NavigationProvider } from "@/contexts/NavigationContext"
+import { ArrowLoader } from "@/components/arrow-loader"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +69,10 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <NavigationProvider>
+            {children}
+            <ArrowLoader />
+          </NavigationProvider>
         </ThemeProvider>
       </body>
     </html>

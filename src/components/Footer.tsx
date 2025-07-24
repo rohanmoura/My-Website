@@ -1,6 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import { useNavigation } from '@/contexts/NavigationContext';
 
 const Footer = () => {
+  const { navigateWithLoader } = useNavigation();
   const currentYear = new Date().getFullYear();
 
   return ( 
@@ -56,29 +60,29 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/landing-pages" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/services/landing-pages', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Landing Pages
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/services/ecommerce" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/services/ecommerce', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Ecommerce Sites
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/services/business-websites" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/services/business-websites', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Business Websites
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/services/web-apps" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/services/web-apps', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Web Applications
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/services/portfolios" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/services/portfolios', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Portfolio Sites
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -88,24 +92,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/work" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/work', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   My Work
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/about', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   About Me
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/contact', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   Get In Touch
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/process" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button onClick={(e) => navigateWithLoader('/process', e)} className="text-gray-300 hover:text-white transition-colors duration-300 text-left">
                   How I Work
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -117,12 +121,12 @@ const Footer = () => {
             © {currentYear} YourName. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+            <button onClick={(e) => navigateWithLoader('/privacy', e)} className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
               Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+            </button>
+            <button onClick={(e) => navigateWithLoader('/terms', e)} className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
               Terms of Service
-            </Link>
+            </button>
           </div>
         </div>
       </div>
