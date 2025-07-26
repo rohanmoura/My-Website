@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { NavigationProvider } from "@/contexts/NavigationContext"
 import { ArrowLoader } from "@/components/arrow-loader"
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +73,7 @@ export default function RootLayout({
           <NavigationProvider>
             {children}
             <ArrowLoader />
+            <Toaster />
           </NavigationProvider>
         </ThemeProvider>
       </body>

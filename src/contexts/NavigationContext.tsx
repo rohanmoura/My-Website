@@ -6,6 +6,8 @@ import { useRouter, usePathname } from 'next/navigation';
 interface NavigationContextType {
   isLoaderActive: boolean;
   navigateWithLoader: (targetPath: string, e?: React.MouseEvent) => void;
+  showLoader: () => void;
+  hideLoader: () => void;
   resetLoader: () => void;
   handleLoaderComplete: () => void;
 }
@@ -42,6 +44,14 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     router.push(targetPath);
   }, [pathname, router]);
 
+  const showLoader = useCallback(() => {
+    setIsLoaderActive(true);
+  }, []);
+
+  const hideLoader = useCallback(() => {
+    setIsLoaderActive(false);
+  }, []);
+
   const handleLoaderComplete = useCallback(() => {
     // This is called by the arrow loader animation when it completes
     // But we only hide the loader if navigation is also complete
@@ -69,7 +79,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, [pathname, isNavigating]);
 
   return (
-    <NavigationContext.Provider value={{ isLoaderActive, navigateWithLoader, resetLoader, handleLoaderComplete }}>
+    <NavigationContext.Provider value={{ isLoaderActive, navigateWithLoader, showLoader, hideLoader, resetLoader, handleLoaderComplete }}>
       {children}
     </NavigationContext.Provider>
   );

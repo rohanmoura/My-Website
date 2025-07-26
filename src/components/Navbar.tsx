@@ -86,35 +86,30 @@ const Navbar = () => {
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}
       animate={{
-        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.7)' : 'rgba(15, 15, 15, 0.95)',
+        backgroundColor: isScrolled 
+          ? 'rgba(255, 255, 255, 0.08)' 
+          : 'rgba(15, 15, 15, 0.95)',
         borderRadius: isScrolled ? '24px' : '0px',
-        marginLeft: isScrolled ? '16px' : '0px',
-        marginRight: isScrolled ? '16px' : '0px',
+        marginLeft: isScrolled ? '3.5%' : '0px',
+        marginRight: isScrolled ? '3.5%' : '0px',
         marginTop: isScrolled ? '4px' : '0px',
         borderWidth: isScrolled ? '1px' : '0px',
-        borderColor: isScrolled ? 'rgba(68, 68, 68, 0.3)' : 'transparent',
+        borderColor: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
         boxShadow: isScrolled
           ? '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(0, 0, 0, 0.2)'
           : '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}
       style={{
         backgroundColor: 'rgba(15, 15, 15, 0.95)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)'
+        backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)'
       }}
       transition={{
         duration: 0.3,
         ease: [0.25, 0.1, 0.25, 1]
       }}
     >
-      <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        animate={{
-          paddingLeft: isScrolled ? '32px' : '16px',
-          paddingRight: isScrolled ? '32px' : '16px'
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <motion.div
@@ -416,7 +411,7 @@ const Navbar = () => {
             </motion.button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile Navigation */}
       <AnimatePresence>
@@ -698,8 +693,6 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-
     </motion.nav>
   );
 };

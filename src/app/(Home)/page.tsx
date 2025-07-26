@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AnimatedBusinessHero from "@/components/animated-buisness-hero";
+import Callback from "@/components/callback";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       <AnimatedBusinessHero />
+      <Callback />
     </main>
   );
 }
